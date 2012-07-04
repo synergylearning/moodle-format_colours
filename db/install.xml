@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="course/format/colours/db" VERSION="20111129" COMMENT="XMLDB file for Moodle course/format/colours"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="format_colours" COMMENT="Data about the section colours for the 'colours' course format">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="courseid"/>
+        <FIELD NAME="courseid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" COMMENT="Course that these colours are for" PREVIOUS="id" NEXT="section"/>
+        <FIELD NAME="section" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" COMMENT="Section within the course that these colours are for" PREVIOUS="courseid" NEXT="headback"/>
+        <FIELD NAME="headback" TYPE="char" LENGTH="20" NOTNULL="false" SEQUENCE="false" COMMENT="Background colour for the head" PREVIOUS="section" NEXT="headfore"/>
+        <FIELD NAME="headfore" TYPE="char" LENGTH="20" NOTNULL="false" SEQUENCE="false" COMMENT="Foreground colour for the heading" PREVIOUS="headback" NEXT="contentback"/>
+        <FIELD NAME="contentback" TYPE="char" LENGTH="20" NOTNULL="false" SEQUENCE="false" COMMENT="Background colour for the main content" PREVIOUS="headfore" NEXT="contentfore"/>
+        <FIELD NAME="contentfore" TYPE="char" LENGTH="20" NOTNULL="false" SEQUENCE="false" COMMENT="Foreground colour for the content" PREVIOUS="contentback" NEXT="link"/>
+        <FIELD NAME="link" TYPE="char" LENGTH="20" NOTNULL="false" SEQUENCE="false" COMMENT="Colour for links" PREVIOUS="contentfore" NEXT="modified"/>
+        <FIELD NAME="modified" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="true" SEQUENCE="false" COMMENT="Timestamp when this was last modified" PREVIOUS="link"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" NEXT="courseid"/>
+        <KEY NAME="courseid" TYPE="foreign" FIELDS="courseid" REFTABLE="course" REFFIELDS="id" PREVIOUS="primary"/>
+      </KEYS>
+    </TABLE>
+  </TABLES>
+</XMLDB>
