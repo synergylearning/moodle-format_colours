@@ -1,8 +1,8 @@
-.course-content ul.topics {margin:0;}
-.course-content ul.topics li.section {list-style: none;margin:5px 0 0 0;padding:0;}
-.course-content ul.topics li.section .content {margin:0 40px;}
-.course-content ul.topics li.section .left {width:40px;float:left;text-align:center;}
-.course-content ul.topics li.section .right {width:40px;float:right;text-align:center;}
+.course-content ul.colours {margin:0;}
+.course-content ul.colours li.section {list-style: none;margin:5px 0 0 0;padding:0;}
+.course-content ul.colours li.section .content {margin:0 40px;}
+.course-content ul.colours li.section .left {width:40px;float:left;text-align:center;}
+.course-content ul.colours li.section .right {width:40px;float:right;text-align:center;}
 .jumpmenu {text-align:center;}
 
 .format_colours_recent_holder {}
@@ -14,7 +14,7 @@
     border:3px solid black !important;
 }
 
-.path-course-view .topics.colourtopics .content,
-.path-course-view .topics.colourtopics .section,
-.course-content .topics.colourtopics .section.main .content,
-.course-content .topics.colourtopics .section.main .section {background: transparent;}
+.path-course-view .colours.colourtopics .content,
+.path-course-view .colours.colourtopics .section,
+.course-content .colours.colourtopics .section.main .content,
+.course-content .colours.colourtopics .section.main .section {background: transparent;}
