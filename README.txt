@@ -1,13 +1,17 @@
-Colours course format for Moodle 2.0-2.2
+Colours course format for Moodle 2.3
 ========================================
 
 This course format, based on the 'Topics' standard format, allows a
 teacher to specify the foreground and background colours for each
 course section.
 
+This is the Moodle 2.3 version, if you are using Moodle 2.2 (or below)
+you must download an earlier version of this plugin.
+
 History
 =======
 
+13-08-2012 - Updated to work with Moodle 2.3
 04-07-2012 - First public release
 
 About
@@ -17,13 +21,11 @@ This format was created by Davo Smith of Synergy Learning (
 http://www.synergy-learning.com/ ), on behalf of Landesmedienzentrum
 Baden-Württemberg (http://www.lmz-bw.de/ ).
 
-The main lib.php and formats.php files are only lightly modified from
-those found within the standard format_topics, the rest is new code.
+The main files are only lightly modified from those found within the
+standard format_topics, the rest is new code.
 
 Installation
 ============
-
-This format is not currently compatible with Moodle 2.3.
 
 1. Unzip all the files locally
 
