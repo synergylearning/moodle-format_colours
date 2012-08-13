@@ -60,7 +60,7 @@ function format_colour_clean_html_colour($colour) {
     return preg_replace('/[^a-zA-Z0-9#]/', '', $colour);
 }
 
-function format_colour_output_style_tag($courseid) {
+function format_colour_output_style_tag($courseid, $displaysection = 0) {
     global $DB;
 
     $colours = $DB->get_records('format_colours', array('courseid' => $courseid));
@@ -72,7 +72,11 @@ function format_colour_output_style_tag($courseid) {
     foreach ($colours as $colour) {
         $basepath = 'li#section-'.$colour->section.' ';
         if ($colour->headback || $colour->headfore) {
+            if ($displaysection && $colour->section == $displaysection) {
+                $output .= '.course-content .single-section .section-navigation.header, ';
+            }
             $output .= $basepath.".section-header, ";
+            $output .= $basepath."h3.section-title, ";
             $output .= $basepath."h3.sectionname {";
             if ($colour->headback) {
                 $output .= 'background: '.format_colour_clean_html_colour($colour->headback).";";

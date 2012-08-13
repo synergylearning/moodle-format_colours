@@ -48,7 +48,8 @@ if (($marker >=0) && has_capability('moodle/course:setcurrentsection', $context)
 
 $renderer = $PAGE->get_renderer('format_colours');
 
-echo format_colour_output_style_tag($course->id);
+$displaysingle = ($course->coursedisplay == COURSE_DISPLAY_MULTIPAGE) ? $displaysection : 0;
+echo format_colour_output_style_tag($course->id, $displaysingle);
 format_colour_add_javascript($course->id, $course->numsections);
 
 if (!empty($displaysection) && $course->coursedisplay == COURSE_DISPLAY_MULTIPAGE) {
