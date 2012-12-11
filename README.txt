@@ -11,7 +11,7 @@ you must download an earlier version of this plugin.
 History
 =======
 
-12-11-2012 - Updated to work with Moodle 2.3
+12-11-2012 - Updated to work with Moodle 2.4
 05-10-2012 - Fixed error message about 2.3 compatibility (designed to prevent 2.2 version from being installed on a 2.3
              server)
 13-08-2012 - Updated to work with Moodle 2.3
