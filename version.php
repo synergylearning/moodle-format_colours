@@ -19,4 +19,4 @@ $plugin->component = 'format_colours';
 $plugin->cron = 0;
 $plugin->requires = 2012120300; // Moodle 2.4+
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = "2.3+ (Build: 2012121100)";
+$plugin->release = "2.4+ (Build: 2012121100)";
