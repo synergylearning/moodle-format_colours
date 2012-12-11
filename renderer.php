@@ -112,8 +112,8 @@ class format_colours_renderer extends format_section_renderer_base {
         return $o.format_colour_edit_icon($course->id, $section->section);
     }
 
-    protected function section_header($section, $course, $onsectionpage) {
-        $o = parent::section_header($section, $course, $onsectionpage);
+    protected function section_header($section, $course, $onsectionpage, $sectionreturn = null) {
+        $o = parent::section_header($section, $course, $onsectionpage, $sectionreturn);
 
         return html_writer::tag('div', $o, array('class' => 'section-header'));
     }

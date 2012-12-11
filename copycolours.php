@@ -15,12 +15,15 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 require_once(dirname(__FILE__).'/../../../config.php');
+global $DB, $PAGE;
+require_once($CFG->dirroot.'/course/lib.php');
 
 $courseid = required_param('courseid', PARAM_INT);
 $from = required_param('from', PARAM_INT);
 $to = required_param('to', PARAM_INT);
 
 $course = $DB->get_record('course', array('id' => $courseid), '*', MUST_EXIST);
+$course = course_get_format($course)->get_course();
 
 if ($from < 0 || $from > $course->numsections) {
     throw new moodle_exception('invalidsection', 'format_colours');
@@ -33,7 +36,8 @@ $courseurl = new moodle_url('/course/view.php', array('id' => $course->id));
 $PAGE->set_url($courseurl); // We want to go back to course page if there is a problem
 
 require_login($course);
-require_capability('format/colours:editcolours', get_context_instance(CONTEXT_COURSE, $course->id));
+$context = context_course::instance($course->id);
+require_capability('format/colours:editcolours', $context);
 require_sesskey();
 
 $srcdata = $DB->get_record('format_colours', array('courseid' => $course->id, 'section' => $from));

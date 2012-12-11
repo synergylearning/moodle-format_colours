@@ -28,7 +28,8 @@ function format_colour_edit_icon($courseid, $sectionid) {
     }
 
     if ($canedit === null) {
-        $canedit = has_capability('format/colours:editcolours', get_context_instance(CONTEXT_COURSE, $courseid));
+        $context = context_course::instance($courseid);
+        $canedit = has_capability('format/colours:editcolours', $context);
     }
     if (!$canedit) {
         return '';
@@ -40,18 +41,12 @@ function format_colour_edit_icon($courseid, $sectionid) {
     }
 
     $editurl = new moodle_url('/course/format/colours/editcolours.php', array('courseid'=>$courseid, 'section'=>$sectionid));
-
     $output = '';
-    $output .= '<br/>';
-    $output .= '<a href="'.$editurl.'">';
-    $output .= '<img src="'.$OUTPUT->pix_url('editcolours', 'format_colours').'" alt="'.$editstr.'" title="'.$editstr.'" />';
-    $output .= '</a>';
-    $output .= html_writer::empty_tag('br');
-    $copyimg = html_writer::empty_tag('img', array('src' => $OUTPUT->pix_url('copycolours', 'format_colours'),
-                                                   'alt' => $copystr,
-                                                   'title' => $copystr));
-    $output .= html_writer::link('#', $copyimg, array('class' => 'format_colour_copycolours',
-                                                      'id' => 'format_colour_copycolours-'.$sectionid));
+    $icon = $OUTPUT->pix_icon('editcolours', $editstr, 'format_colours', array('title' => $editstr));
+    $output .= html_writer::link($editurl, $icon, array('class' => 'format_colour_editcolours'));
+    $icon = $OUTPUT->pix_icon('copycolours', $copystr, 'format_colours', array('title' => $copystr));
+    $output .= html_writer::link('#', $icon, array('class' => 'format_colour_copycolours',
+                                                  'id' => 'format_colour_copycolours-'.$sectionid));
 
     return $output;
 }

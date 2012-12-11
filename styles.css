@@ -9,7 +9,7 @@
 .format_colours_recent_holder div.format_colours_recent {width:16px;height:16px;border:solid black 1px;margin:3px;float:left;cursor:pointer}
 .section-header {min-height:2em}
 
-.course-content .current {
+.course-content ul.colours .current {
     background:#efefef;
     border:3px solid black !important;
 }
@@ -18,3 +18,5 @@
 .path-course-view .colours.colourtopics .section,
 .course-content .colours.colourtopics .section.main .content,
 .course-content .colours.colourtopics .section.main .section {background: transparent;}
+
+ul.colours .format_colour_editcolours, ul.colours .format_colour_copycolours {display:inline-block;}

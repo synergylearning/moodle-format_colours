@@ -14,9 +14,9 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-$plugin->version = 2012080801;
+$plugin->version = 2012121100;
 $plugin->component = 'format_colours';
 $plugin->cron = 0;
-$plugin->requires = 2012062500; // Moodle 2.3+
+$plugin->requires = 2012120300; // Moodle 2.4+
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = "2.3+ (Build: 2012080801)";
+$plugin->release = "2.3+ (Build: 2012121100)";

@@ -15,14 +15,15 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 require_once(dirname(dirname(dirname(dirname(__FILE__)))).'/config.php');
+global $CFG, $DB, $PAGE, $OUTPUT;
 require_once($CFG->dirroot.'/course/format/colours/editcolours_form.php');
+require_once($CFG->dirroot.'/course/lib.php');
 
 $courseid = required_param('courseid', PARAM_INT);
 $section = required_param('section', PARAM_INT);
 
-if (!$course = $DB->get_record('course', array('id' => $courseid))) {
-    throw new moodle_exception('invalidcourse');
-}
+$course = $DB->get_record('course', array('id' => $courseid), '*', MUST_EXIST);
+$course = course_get_format($course)->get_course();
 
 if ($section < 0 || $section > $course->numsections) {
     throw new moodle_exception('invalidsection', 'format_colours');
@@ -31,7 +32,8 @@ if ($section < 0 || $section > $course->numsections) {
 $PAGE->set_url(new moodle_url('/course/format/colours/editcolours.php', array('courseid' => $course->id, 'section' => $section)));
 
 require_login($course);
-require_capability('format/colours:editcolours', get_context_instance(CONTEXT_COURSE, $course->id));
+$context = context_course::instance($course->id);
+require_capability('format/colours:editcolours', $context);
 
 $courseurl = new moodle_url('/course/view.php', array('id' => $course->id));
 $custom = array('section' => $section, 'courseid' => $course->id, 'recent' => null);
@@ -79,22 +81,14 @@ if ($data = $form->get_data()) {
     redirect($courseurl);
 }
 
-// Using YUI2 colour picker, as YUI3 does not exist yet
-$PAGE->requires->yui2_lib('dom');
-$PAGE->requires->yui2_lib('event');
-$PAGE->requires->yui2_lib('element');
-$PAGE->requires->yui2_lib('dragdrop');
-$PAGE->requires->yui2_lib('slider');
-$PAGE->requires->yui2_lib('colorpicker');
-$PAGE->requires->yui2_lib('get');
 $jsmodule = array(
-                  'name' => 'format_colours',
-                  'fullpath' => new moodle_url('/course/format/colours/editcolours.js')
-                  );
+    'name' => 'format_colours',
+    'fullpath' => new moodle_url('/course/format/colours/editcolours.js')
+);
 $pickerthumb = $OUTPUT->pix_url('picker_thumb', 'format_colours').'';
 $huethumb = $OUTPUT->pix_url('hue_thumb', 'format_colours').'';
 
-$PAGE->requires->js_init_call('editcolours.init', array($pickerthumb, $huethumb), true, $jsmodule);
+$PAGE->requires->js_init_call('M.editcolours.init', array($pickerthumb, $huethumb), true, $jsmodule);
 
 $PAGE->set_pagelayout('standard');
 $PAGE->set_title($course->shortname.': '.get_string('editcolours', 'format_colours'));

@@ -1,16 +1,17 @@
-Colours course format for Moodle 2.3
+Colours course format for Moodle 2.4
 ========================================
 
 This course format, based on the 'Topics' standard format, allows a
 teacher to specify the foreground and background colours for each
 course section.
 
-This is the Moodle 2.3 version, if you are using Moodle 2.2 (or below)
+This is the Moodle 2.4 version, if you are using Moodle 2.3 (or below)
 you must download an earlier version of this plugin.
 
 History
 =======
 
+12-11-2012 - Updated to work with Moodle 2.3
 05-10-2012 - Fixed error message about 2.3 compatibility (designed to prevent 2.2 version from being installed on a 2.3
              server)
 13-08-2012 - Updated to work with Moodle 2.3
